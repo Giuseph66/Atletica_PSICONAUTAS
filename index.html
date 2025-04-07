@@ -1,90 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atlética Rapunas</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atlética PSICONAUTAS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Ícones do Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Link para o CSS externo -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul class="navbar">
-                <li><a href="#about">Sobre Nós</a></li>
-                <li><a href="#founders">Fundadores</a></li>
-                <li><a href="#products">Produtos</a></li>
-                <li><a href="#events">Eventos</a></li>
-                <li><a href="#extras">Extras</a></li>
-                <li><a href="#social">Redes Sociais</a></li>
-                <li><a href="#registration-form">Registro</a></li>
-            </ul>
-        </nav>
-        <h1>Atlética Rapunas</h1>
-    </header>
-
-    <main>
-        <section id="about">
-            <h2>Quem Somos</h2>
-            <p>Rapunas é uma atlética dedicada à promoção do esporte, cultura e inovação. Nossa missão é inspirar, transformar e conectar nossos associados em uma comunidade vibrante.</p>
-        </section>
-
-        <section id="founders">
-            <h2>Fundadores e Diretores</h2>
-            <p>Conheça nossa equipe dedicada à excelência e inovação esportiva:</p>
-            <ul>
-                <li><strong>João Silva</strong> - Fundador e Diretor Geral</li>
-                <li><strong>Maria Oliveira</strong> - Diretora de Eventos</li>
-                <li><strong>Carlos Souza</strong> - Diretor de Marketing</li>
-            </ul>
-        </section>
-
-        <section id="products">
-            <h2>Produtos Oferecidos</h2>
-            <div class="gallery">
-                <div class="product">Camiseta</div>
-                <div class="product">Boné</div>
-                <div class="product">Moletom</div>
-                <!-- ...adicione mais produtos conforme necessário... -->
-            </div>
-        </section>
-
-        <section id="events">
-            <h2>Eventos e Projetos Programados</h2>
-            <ul>
-                <li>Campeonato Universitário - Inscrições abertas</li>
-                <li>Oficina de Inovação Esportiva - Próxima semana</li>
-                <li>Projeto Social: Esporte para Todos - Em breve</li>
-            </ul>
-        </section>
-
-        <section id="extras">
-            <h2>Informações Extras</h2>
-            <p>Fique atento aos nossos eventos, promoções e novidades. Estamos sempre inovando para oferecer experiências únicas e marcantes.</p>
-        </section>
-
-        <section id="social">
-            <h2>Redes Sociais</h2>
-            <p>Instagram: <a href="https://www.instagram.com/foolter/" target="_blank">@foolter</a></p>
-        </section>
-    </main>
-
-    <footer id="registration-form">
-        <h2>Registro</h2>
-        <form id="registration-form">
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="contact">Contato:</label>
-            <input type="text" id="contact" name="contact" required>
-            <button type="submit">Enviar</button>
-        </form>
-        <div class="social-media">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <!-- Cabeçalho com menu de navegação -->
+  <header>
+    <nav>
+      <ul class="navbar">
+        <li><a href="#about">Quem Somos</a></li>
+        <li><a href="#founders">Fundadores</a></li>
+        <li><a href="#products">Produtos</a></li>
+        <li><a href="#events">Eventos</a></li>
+        <li><a href="#extras">Extras</a></li>
+        <li><a href="#social">Redes Sociais</a></li>
+        <li><a href="#registration-form">Registro</a></li>
+      </ul>
+    </nav>
+    <h1>Atlética PSICONAUTAS</h1>
+  </header>
+  
+  <main>
+    <!-- Seção Quem Somos (tipo texto) -->
+    <section id="about" class="editable-section" data-type="text">
+      <div class="section-header">
+        <h2>Quem Somos</h2>
+        <button class="section-edit-btn" data-section="about">Editar</button>
+      </div>
+      <div class="section-content">
+        <p>Digite aqui informações sobre a atlética...</p>
+      </div>
+    </section>
+    
+    <!-- Seção Fundadores e Diretores (tipo lista) -->
+    <section id="founders" class="editable-section" data-type="list">
+      <div class="section-header">
+        <h2>Fundadores e Diretores</h2>
+        <button class="section-edit-btn" data-section="founders">Editar</button>
+      </div>
+      <ul class="section-list">
+        <!-- Inicialmente vazio -->
+      </ul>
+    </section>
+    
+    <!-- Seção Produtos Oferecidos (tipo lista) -->
+    <section id="products" class="editable-section" data-type="list">
+      <div class="section-header">
+        <h2>Produtos Oferecidos</h2>
+        <button class="section-edit-btn" data-section="products">Editar</button>
+      </div>
+      <ul class="section-list">
+        <!-- Inicialmente vazio -->
+      </ul>
+    </section>
+    
+    <!-- Seção Eventos (tipo lista) -->
+    <section id="events" class="editable-section" data-type="list">
+      <div class="section-header">
+        <h2>Eventos e Projetos Programados</h2>
+        <button class="section-edit-btn" data-section="events">Editar</button>
+      </div>
+      <ul class="section-list">
+        <!-- Inicialmente vazio -->
+      </ul>
+    </section>
+    
+    <!-- Seção Informações Extras (tipo texto) -->
+    <section id="extras" class="editable-section" data-type="text">
+      <div class="section-header">
+        <h2>Informações Extras</h2>
+        <button class="section-edit-btn" data-section="extras">Editar</button>
+      </div>
+      <div class="section-content">
+        <p>Digite aqui as informações extras...</p>
+      </div>
+    </section>
+    
+    <!-- Seção Redes Sociais (tipo texto) -->
+    <section id="social" class="editable-section" data-type="text">
+      <div class="section-header">
+        <h2>Redes Sociais</h2>
+        <button class="section-edit-btn" data-section="social">Editar</button>
+      </div>
+      <div class="section-content">
+        <p>Digite aqui os links ou informações sobre redes sociais...</p>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Formulário de Registro (para identificar administrador) -->
+  <footer id="registration-form">
+    <section class="registration">
+      <h2>Registro</h2>
+      <form id="registrationForm">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" placeholder="Digite sua senha ou nome">
+        <label for="contact">Número de Contato:</label>
+        <input type="tel" id="contact" name="contact" placeholder="Seu número de contato">
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+    <div class="social-media">
+      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+  
+  <!-- Modal de Edição (único para todos os tópicos) -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle">Editar Seção</h2>
+      <div id="modalBody">
+        <!-- Conteúdo dinâmico será inserido aqui -->
+      </div>
+      <div class="modal-actions">
+        <button id="saveChanges">Salvar</button>
+        <button id="cancelEdit">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Link para o JavaScript externo -->
+  <script src="script.js"></script>
 </body>
 </html>

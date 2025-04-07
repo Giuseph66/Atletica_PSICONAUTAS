@@ -1,0 +1,219 @@
+@model WebNorteGerenciador.Modelos.ModeloDashboard
+
+<div class="container-fluid py-4">
+    <!-- Cards para Novos Clientes e Novos Contratos -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Novos Clientes</h5>
+                    <p id="novosClientes" class="card-text display-6">@Model.novosClientes</p>
+                    <i class="fa fa-users fa-2x float-end"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Novos Contratos</h5>
+                    <p id="novosContratos" class="card-text display-6">@Model.novosContratos</p>
+                    <i class="fa fa-file-contract fa-2x float-end"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Informações Financeiras -->
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            Informações Financeiras
+        </div>
+        <div class="card-body">
+            <div class="row text-center">
+                <div class="col-md-2">
+                    <h6>Previsão de Recebimentos</h6>
+                    <p id="prevRecebimentos" class="text-success fw-bold">R$ @Model.receberAVencer</p>
+                </div>
+                <div class="col-md-2">
+                    <h6>Previsão de Pagamentos</h6>
+                    <p id="prevPagamentos" class="text-danger fw-bold">R$ @Model.pagarAVencer</p>
+                </div>
+                <div class="col-md-2">
+                    <h6>Valor Recebido</h6>
+                    <p id="valorRecebido" class="text-success fw-bold">R$ @Model.receberRecebidas</p>
+                </div>
+                <div class="col-md-2">
+                    <h6>Valor Pago</h6>
+                    <p id="valorPago" class="text-danger fw-bold">R$ @Model.pagarLiquidado</p>
+                </div>
+                <div class="col-md-2">
+                    <h6>Receber em Atraso</h6>
+                    <p id="receberAtraso" class="text-warning fw-bold">R$ @Model.receberAtrasadas</p>
+                </div>
+                <div class="col-md-2">
+                    <h6>Pagamentos em Atraso</h6>
+                    <p id="pagamentosAtraso" class="text-warning fw-bold">R$ @Model.pagarVencido</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lista de Contas Bancárias -->
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            Contas Bancárias
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Favorecido</th>
+                        <th>Banco</th>
+                        <th>Total de Créditos</th>
+                        <th>Total de Débitos</th>
+                        <th>Saldo</th>
+                    </tr>
+                </thead>
+                <tbody id="contasBancariasBody">
+                    <!-- As linhas serão inseridas dinamicamente via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Gráficos -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    Taxa de Crescimento de Recebimentos
+                </div>
+                <div class="card-body">
+                    <canvas id="recebimentosChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <!-- Outros gráficos podem ser atualizados conforme necessário -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    Taxa de Crescimento de Clientes
+                </div>
+                <div class="card-body">
+                    <canvas id="clientesChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    Taxa de Crescimento de Contratos
+                </div>
+                <div class="card-body">
+                    <canvas id="contratosChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    Contratos Cancelados
+                </div>
+                <div class="card-body">
+                    <canvas id="canceladosChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts de gráficos e atualização da dashboard -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Atualiza o gráfico de Taxa de Crescimento de Recebimentos
+    let taxaData = [];
+    try {
+        taxaData = @Html.Raw(Model.taxaCrescimento);
+    } catch (e) {
+        console.error("Erro ao interpretar taxaCrescimento:", e);
+    }
+    if (taxaData.length > 0) {
+        const anos = taxaData.map(item => item.ano);
+        const crescimento = taxaData.map(item => item.crescimentoRelacaoAnoAnterior);
+
+        new Chart(document.getElementById('recebimentosChart'), {
+            type: 'bar',
+            data: {
+                labels: anos,
+                datasets: [{
+                    label: 'Taxa de Crescimento de Recebimentos (%)',
+                    data: crescimento,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' }
+                }
+            }
+        });
+    }
+
+    // Atualiza a tabela de Contas Bancárias com os dados da API
+    let contasBancariasData = [];
+    try {
+        contasBancariasData = @Html.Raw(Model.movBancario);
+    } catch (e) {
+        console.error("Erro ao interpretar movBancario:", e);
+    }
+    const contasBancariasBody = document.getElementById('contasBancariasBody');
+    if (contasBancariasData.length > 0) {
+        contasBancariasData.forEach(item => {
+            let tr = document.createElement('tr');
+            tr.innerHTML = `<td>${item.favorecido}</td>
+                            <td>${item.banco}</td>
+                            <td>R$ ${Number(item.totalCreditos).toFixed(2)}</td>
+                            <td>R$ ${Number(item.totalDebitos).toFixed(2)}</td>
+                            <td class="${item.saldo >= 0 ? 'text-success' : 'text-danger'}">R$ ${Number(item.saldo).toFixed(2)}</td>`;
+            contasBancariasBody.appendChild(tr);
+        });
+    }
+
+    // Exemplo de gráficos estáticos para os demais (ou adapte conforme necessário)
+    const labelsMeses = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+    const dataConfigStatic = (label, data, color) => ({
+        labels: labelsMeses,
+        datasets: [{
+            label: label,
+            data: data,
+            backgroundColor: color,
+            borderColor: color,
+            borderWidth: 1,
+        }],
+    });
+    const optionsStatic = {
+        responsive: true,
+        plugins: {
+            legend: { position: 'top' }
+        },
+    };
+
+    new Chart(document.getElementById('clientesChart'), {
+        type: 'line',
+        data: dataConfigStatic('Clientes', [5, 10, 15, 25, 30, 40, 50, 65, 70, 80, 90, 100], 'rgba(54, 162, 235, 0.6)'),
+        options: optionsStatic,
+    });
+    new Chart(document.getElementById('contratosChart'), {
+        type: 'line',
+        data: dataConfigStatic('Contratos', [3, 7, 12, 20, 25, 33, 38, 47, 52, 60, 72, 85], 'rgba(153, 102, 255, 0.6)'),
+        options: optionsStatic,
+    });
+    new Chart(document.getElementById('canceladosChart'), {
+        type: 'line',
+        data: dataConfigStatic('Cancelamentos', [2, 1, 3, 4, 2, 6, 5, 3, 8, 6, 4, 7], 'rgba(255, 99, 132, 0.6)'),
+        options: optionsStatic,
+    });
+</script>

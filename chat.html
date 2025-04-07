@@ -24,14 +24,14 @@
     
     body {
       font-family: 'Roboto', sans-serif;
-      background: var(--white);
+      background: var(--background-gradient);
       color: var(--text-color);
       min-height: 100vh;
       width: 100vw;
+      overflow-x: hidden;
     }
     
     header {
-      background: var(--background-gradient);
       color: var(--white);
       text-align: center;
       padding: 5vh 2vw;
@@ -79,7 +79,6 @@
       left: 0;
       width: 100%;
       height: 4vh;
-      background: var(--secondary-color);
       border-radius: 50%;
       box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
     }
@@ -131,11 +130,31 @@
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       color: var(--white);
+      position: relative;
       transition: background 0.3s;
     }
     
     #founders li:hover {
       background: var(--secondary-color);
+    }
+    
+    /* Botão de Editar (apenas para admin) */
+    .edit-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: var(--primary-color);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      padding: 0.3em 0.5em;
+      font-size: 0.8em;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .edit-btn:hover {
+      background: #0c449f;
     }
     
     /* Galeria de Produtos */
@@ -151,6 +170,7 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       transition: transform 0.3s, box-shadow 0.3s;
       background: var(--white);
+      position: relative;
     }
     
     .gallery-item:hover {
@@ -200,8 +220,6 @@
     
     /* Formulário de Registro */
     footer {
-      background: var(--white);
-      border-top: 4px solid var(--primary-color);
       padding: 4vh 2vw;
       margin-top: 5vh;
     }
@@ -211,6 +229,9 @@
       background-color: #ffffff;
       margin: 0 auto;
       text-align: center;
+      padding: 2vh 1vw;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     
     .registration form {
@@ -302,24 +323,51 @@
       background: #0c449f;
     }
     
-.social-media {
-    display: flex;
-    margin-top: 2%;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    gap: 1rem;
-    color: var(--primary-color);
-}
-
-.social-media a {
-    font-size: 2rem;
-    transition: color 0.3s;
-}
-
-.social-media a:hover {
-    color: #428eff; /* Azul safira suave */
-}
+    /* Modal de Edição */
+    .modal {
+      display: none; 
+      position: fixed; 
+      z-index: 1000; 
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto; 
+      background-color: rgba(0,0,0,0.4);
+    }
+    
+    .modal-content {
+      background-color: var(--white);
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid var(--primary-color);
+      width: 80%;
+      max-width: 500px;
+      border-radius: 10px;
+      position: relative;
+    }
+    
+    .modal-content .close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+    
+    .modal-actions {
+      text-align: right;
+      margin-top: 20px;
+    }
+    
+    .modal-actions button {
+      padding: 0.5em 1em;
+      margin-left: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
     @media (max-width: 768px) {
       header h1 {
         font-size: calc(6vw + 1em);
@@ -356,32 +404,41 @@
     <!-- Seção Quem Somos -->
     <section id="about" class="about">
       <h2>Quem Somos</h2>
-      <p>PSICONAUTAS é uma atlética dedicada à promoção do esporte, cultura e inovação. Nossa missão é inspirar, transformar e conectar nossos associados em uma comunidade vibrante.</p>
+      <p>Psiconautas é uma atlética dedicada à promoção do esporte, cultura e inovação. Nossa missão é inspirar, transformar e conectar nossos associados em uma comunidade vibrante.</p>
+      <button class="edit-btn" data-type="founder">Editar</button>
     </section>
     
     <!-- Seção Fundadores e Diretores -->
     <section id="founders" class="founders">
+      <button class="edit-btn" data-type="founder">Editar</button>
       <h2>Fundadores e Diretores</h2>
       <p>Conheça nossa equipe dedicada à excelência e inovação esportiva:</p>
       <ul>
-        <li><strong>João Silva</strong><br>Fundador e Diretor Geral</li>
-        <li><strong>Maria Oliveira</strong><br>Diretora de Eventos</li>
-        <li><strong>Carlos Souza</strong><br>Diretor de Marketing</li>
+        <li data-type="founder" data-role="Fundador e Diretor Geral">
+          <strong>João Silva</strong><br>Fundador e Diretor Geral
+        </li>
+        <li data-type="founder" data-role="Diretora de Eventos">
+          <strong>Maria Oliveira</strong><br>Diretora de Eventos
+        </li>
+        <li data-type="founder" data-role="Diretor de Marketing">
+          <strong>Carlos Souza</strong><br>Diretor de Marketing
+        </li>
       </ul>
     </section>
     
     <!-- Galeria de Produtos -->
     <section id="products" class="gallery">
+      <button class="edit-btn" data-type="product">Editar</button>
       <h2>Produtos Oferecidos</h2>
-      <div class="gallery-item">
+      <div class="gallery-item" data-type="product" data-image="https://via.placeholder.com/400x250">
         <img src="https://via.placeholder.com/400x250" alt="Produto 1">
         <p>Produto 1</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" data-type="product" data-image="https://via.placeholder.com/400x250">
         <img src="https://via.placeholder.com/400x250" alt="Produto 2">
         <p>Produto 2</p>
       </div>
-      <div class="gallery-item">
+      <div class="gallery-item" data-type="product" data-image="https://via.placeholder.com/400x250">
         <img src="https://via.placeholder.com/400x250" alt="Produto 3">
         <p>Produto 3</p>
       </div>
@@ -389,6 +446,7 @@
     
     <!-- Seção Eventos e Projetos Programados -->
     <section id="events" class="events">
+      <button class="edit-btn" data-type="founder">Editar</button>
       <h2>Eventos e Projetos Programados</h2>
       <ul>
         <li>Campeonato Universitário - Inscrições abertas</li>
@@ -401,6 +459,7 @@
     <section id="extras" class="extra-info">
       <h2>Informações Extras</h2>
       <p>Fique atento aos nossos eventos, promoções e novidades. Estamos sempre inovando para oferecer experiências únicas e marcantes.</p>
+      <button class="edit-btn" data-type="extra">Editar</button>
     </section>
     
     <!-- Seção Redes Sociais -->
@@ -420,14 +479,14 @@
         <label for="contact">Número de Contato:</label>
         <input type="tel" id="contact" name="contact" placeholder="Seu número de contato" required>
         <button type="submit">Enviar</button>
-    </form>
-</section>
-<div class="social-media">
-  <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-  <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-  <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-</div>
-</footer>
+      </form>
+    </section>
+    <div class="social-media">
+      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
   
   <!-- Painel de Administração (oculto por padrão) -->
   <section id="adminPanel">
@@ -452,34 +511,81 @@
       <textarea id="extraInfoText" rows="4" placeholder="Digite as novas informações extras"></textarea>
       <button id="updateExtraInfo">Atualizar Informações</button>
     </div>
-
   </section>
   
+  <!-- Modal de Edição -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle">Editar Item</h2>
+      <div id="modalBody">
+        <!-- Conteúdo dinâmico será inserido aqui -->
+      </div>
+      <div class="modal-actions">
+        <button id="saveChanges">Salvar</button>
+        <button id="deleteItem">Apagar</button>
+        <button id="cancelEdit">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  
   <script>
-    // Gera a senha de administrador dinâmica baseada na data, dia da semana e um salt fixo
+    // Variável global para controle do modo administrador
+    let isAdmin = false;
+    
+    // Atualiza a visibilidade de todos os botões de edição
+    function updateEditButtonsVisibility() {
+      document.querySelectorAll('.edit-btn').forEach(button => {
+        button.style.display = isAdmin ? 'block' : 'none';
+      });
+    }
+    
+    // Função para criar um botão de edição e adicioná-lo ao elemento (produto ou fundador)
+    function addEditButton(parentElement, type) {
+      const editBtn = document.createElement('button');
+      editBtn.className = 'edit-btn';
+      editBtn.textContent = 'Editar';
+      editBtn.setAttribute('data-type', type);
+      editBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openEditModal(parentElement, type);
+      });
+      // Define a visibilidade com base no modo admin
+      editBtn.style.display = isAdmin ? 'block' : 'none';
+      parentElement.appendChild(editBtn);
+    }
+    
+    // Gera a senha de administrador dinâmica baseada na data, dia da semana, um salt fixo e uma letra-chave
     function getAdminPassword() {
       const date = new Date();
       const day = ("0" + date.getDate()).slice(-2);
       const month = ("0" + (date.getMonth() + 1)).slice(-2);
       const year = date.getFullYear();
-      const dayOfWeek = date.getDay(); // 0 (Domingo) a 6 (Sábado)
-      const salt = "PSICONAUTAS"; // Salt fixo para melhorar a senha
-      return day + month + year + dayOfWeek + salt;
+      const dayOfWeek = date.getDay(); 
+      const salt = "Psiconautas"; 
+      const letra_chave = "sociais".charAt(dayOfWeek); 
+      return day + month + year + dayOfWeek + salt + letra_chave;
     }
     
     // Tratamento do formulário de registro
     document.getElementById('registrationForm').addEventListener('submit', function(event) {
       event.preventDefault();
+      // Aqui pode ser implementado o envio dos dados se não for administrador
+    });
+    
+    document.getElementById('name').addEventListener('input', function() {
       const nameInput = document.getElementById('name').value;
-      const contact = document.getElementById('contact').value;
       const adminPassword = getAdminPassword();
-      
+      console.log("Senha de administrador: " + adminPassword); // Para depuração
       if (nameInput === adminPassword) {
         alert("Bem vindo, administrador!");
+        isAdmin = true;
         document.getElementById('adminPanel').style.display = 'block';
       } else {
-        alert('Registro enviado!\nNome: ' + nameInput + '\nContato: ' + contact);
+        isAdmin = false;
+        document.getElementById('adminPanel').style.display = 'none';
       }
+      updateEditButtonsVisibility();
     });
     
     // Adiciona um novo produto à galeria
@@ -491,7 +597,11 @@
         const gallery = document.querySelector('#products');
         const newProduct = document.createElement('div');
         newProduct.className = 'gallery-item';
+        newProduct.setAttribute('data-type', 'product');
+        newProduct.setAttribute('data-image', productImage);
         newProduct.innerHTML = `<img src="${productImage}" alt="${productName}"><p>${productName}</p>`;
+        // Adiciona o botão de editar ao novo produto
+        addEditButton(newProduct, 'product');
         gallery.appendChild(newProduct);
         document.getElementById('productName').value = '';
         document.getElementById('productImage').value = '';
@@ -508,7 +618,11 @@
       if (founderName && founderRole) {
         const foundersList = document.querySelector('#founders ul');
         const newFounder = document.createElement('li');
+        newFounder.setAttribute('data-type', 'founder');
+        newFounder.setAttribute('data-role', founderRole);
         newFounder.innerHTML = `<strong>${founderName}</strong><br>${founderRole}`;
+        // Adiciona o botão de editar ao novo fundador
+        addEditButton(newFounder, 'founder');
         foundersList.appendChild(newFounder);
         document.getElementById('founderName').value = '';
         document.getElementById('founderRole').value = '';
@@ -529,6 +643,99 @@
         alert("Digite as novas informações extras.");
       }
     });
+    
+    // Modal – Abre e preenche com os dados do item a ser editado
+    const modal = document.getElementById('editModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    
+    let currentEditElement = null;
+    let currentEditType = "";
+    
+    function openEditModal(element, type) {
+      currentEditElement = element;
+      currentEditType = type;
+      modalTitle.textContent = "Editar " + (type === "product" ? "Produto" : type === "founder" ? "Fundador/Diretor" : "Informação Extra");
+      // Cria campos de edição conforme o tipo
+      if (type === "product") {
+        const currentName = element.querySelector('p').textContent;
+        const currentImage = element.getAttribute('data-image');
+        modalBody.innerHTML = `
+          <label>Nome:</label>
+          <input type="text" id="modalName" value="${currentName}">
+          <label>URL da Imagem:</label>
+          <input type="text" id="modalImage" value="${currentImage}">
+        `;
+      } else if (type === "founder") {
+        const currentName = element.querySelector('strong').textContent;
+        const currentRole = element.getAttribute('data-role');
+        modalBody.innerHTML = `
+          <label>Nome:</label>
+          <input type="text" id="modalName" value="${currentName}">
+          <label>Cargo:</label>
+          <input type="text" id="modalRole" value="${currentRole}">
+        `;
+      } else if (type === "extra") {
+        const currentExtra = document.querySelector('#extras p').textContent;
+        modalBody.innerHTML = `
+          <label>Informação:</label>
+          <textarea id="modalExtra">${currentExtra}</textarea>
+        `;
+      }
+      modal.style.display = 'block';
+    }
+    
+    // Funções para fechar o modal
+    document.querySelector('.modal .close').addEventListener('click', closeModal);
+    document.getElementById('cancelEdit').addEventListener('click', closeModal);
+    
+    function closeModal() {
+      modal.style.display = 'none';
+      modalBody.innerHTML = "";
+      currentEditElement = null;
+      currentEditType = "";
+    }
+    
+    // Salva as alterações feitas no modal
+    document.getElementById('saveChanges').addEventListener('click', function() {
+      if (currentEditType === "product") {
+        const newName = document.getElementById('modalName').value;
+        const newImage = document.getElementById('modalImage').value;
+        currentEditElement.querySelector('p').textContent = newName;
+        currentEditElement.setAttribute('data-image', newImage);
+        currentEditElement.querySelector('img').src = newImage;
+      } else if (currentEditType === "founder") {
+        const newName = document.getElementById('modalName').value;
+        const newRole = document.getElementById('modalRole').value;
+        currentEditElement.querySelector('strong').textContent = newName;
+        currentEditElement.setAttribute('data-role', newRole);
+        currentEditElement.innerHTML = `<strong>${newName}</strong><br>${newRole}`;
+        // Re-adiciona o botão de editar
+        addEditButton(currentEditElement, "founder");
+      } else if (currentEditType === "extra") {
+        const newExtra = document.getElementById('modalExtra').value;
+        document.querySelector('#extras p').textContent = newExtra;
+      }
+      closeModal();
+    });
+    
+    // Deleta o item em edição
+    document.getElementById('deleteItem').addEventListener('click', function() {
+      if (currentEditElement) {
+        currentEditElement.parentNode.removeChild(currentEditElement);
+      }
+      closeModal();
+    });
+    
+    // Fecha o modal se o usuário clicar fora dele
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+    
+    // Atualiza a visibilidade inicial dos botões de edição
+    updateEditButtonsVisibility();
   </script>
 </body>
 </html>
