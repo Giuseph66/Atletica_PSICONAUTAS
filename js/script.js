@@ -3,7 +3,7 @@ let isAdmin = false;
 
 // Atualiza a visibilidade dos botões de edição em cada seção
 function updateSectionEditButtons() {
-  const editButtons = document.querySelectorAll('.section-edit-btn, .social-edit-btn');
+  const editButtons = document.querySelectorAll('.section-edit-btn, .social-edit-btn, .register-edit-btn');
   editButtons.forEach(button => {
     button.style.display = isAdmin ? 'flex' : 'none';
   });
@@ -744,3 +744,41 @@ function loadExistingProducts() {
   
   existingProducts.innerHTML = productsHTML;
 }
+
+// Função para abrir o modal de edição da URL do dadus.json
+function openEditDadusUrlModal() {
+  const modal = document.getElementById('editModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+
+  modalTitle.textContent = 'Editar URL';
+  modalBody.innerHTML = `
+    <div class="form-group">
+      <label for="dadusUrl">URL:</label>
+      <input type="url" id="dadusUrl" placeholder="Digite a nova URL">
+    </div>
+  `;
+
+  // Adiciona eventos aos botões
+  //document.getElementById('saveDadusUrl').addEventListener('click', saveDadusUrl);
+  //document.getElementById('cancelDadusEdit').addEventListener('click', closeModal);
+
+  modal.style.display = 'block';
+}
+
+// Função para salvar a nova URL do dadus.json
+function saveDadusUrl() {
+  const newUrl = document.getElementById('dadusUrl').value;
+  if (!newUrl) {
+    alert('Por favor, insira uma URL válida.');
+    return;
+  }
+
+  // Atualiza a URL no arquivo dadus.json (simulação)
+  console.log(`Nova URL do Dadus: ${newUrl}`);
+  alert('URL do Dadus atualizada com sucesso!');
+  closeModal();
+}
+
+// Adiciona evento ao botão de editar URL do Dadus
+document.getElementById('editDadusUrl').addEventListener('click', openEditDadusUrlModal);
