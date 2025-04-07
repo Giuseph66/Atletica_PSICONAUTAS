@@ -1,0 +1,50 @@
+{
+  "apiUrl": "https://your-api-endpoint.com/endpoint",
+  "quemSomos": "A Atlética PSICONAUTAS é uma organização estudantil dedicada a promover eventos, produtos e projetos que unem esporte, cultura e integração acadêmica.",
+  "fundadoresEDiretores": [
+    {
+      "nome": "João Silva",
+      "cargo": "Presidente"
+    },
+    {
+      "nome": "Maria Oliveira",
+      "cargo": "Vice-Presidente"
+    },
+    {
+      "nome": "Carlos Santos",
+      "cargo": "Diretor de Marketing"
+    },
+    {
+      "nome": "Ana Costa",
+      "cargo": "Diretora Financeira"
+    }
+  ],
+  "produtos": [
+    {
+      "nome": "Camisetas Personalizadas"
+    },
+    {
+      "nome": "Canecas"
+    },
+    {
+      "nome": "Acessórios"
+    }
+  ],
+  "eventos": [
+    {
+      "nome": "Interpsico 2025"
+    },
+    {
+      "nome": "Festa de Integração"
+    }
+  ],
+  "informacoesExtras": "A Atlética PSICONAUTAS também apoia projetos sociais e promove campanhas de conscientização sobre saúde mental.",
+  "redesSociais": {
+    "facebook": "https://www.facebook.com/psiconautas",
+    "instagram": "https://www.instagram.com/psiconautas",
+    "twitter": "https://www.twitter.com/psiconautas",
+    "whatsapp": "https://wa.me/1234567890",
+    "youtube": "https://www.youtube.com/psiconautas",
+    "tiktok": "https://www.tiktok.com/@psiconautas"
+  }
+}

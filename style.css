@@ -27,8 +27,7 @@ body {
 header {
   color: var(--white);
   text-align: center;
-  padding: 5vh 2vw;
-  height: 30vh;
+  padding: 2vh 2vw;
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow);
@@ -68,7 +67,6 @@ header h1 {
   letter-spacing: 2px;
   text-transform: uppercase;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  margin-top: 2vh;
 }
 
 main {
@@ -278,6 +276,7 @@ main {
 .save-btn,
 .cancel-btn,
 .add-founder-btn,
+.add-product-btn,
 #saveChanges,
 #cancelEdit,
 #saveSocialLinks,
@@ -555,7 +554,7 @@ main {
 }
 
 .social-media {
-  background: var(--white);
+  /*background: var(--white);*/
   border-radius: 15px;
   padding: 2rem;
   margin: 2rem 0;

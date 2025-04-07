@@ -166,14 +166,14 @@ function openFoundersEditModal() {
         <div class="form-group">
           <label for="founderImage">Foto:</label>
           <div class="image-upload-container">
-            <input type="file" id="founderImage" accept="image/*">
-            <div class="image-preview-container">
-              <img id="founderImagePreview" class="image-preview" src="" alt="Preview">
-              <div class="image-placeholder">
-                <i class="fas fa-user"></i>
-                <span>Clique para adicionar uma foto</span>
-              </div>
-            </div>
+          <div class="image-preview-container">
+          <img id="founderImagePreview" class="image-preview" src="" alt="Preview">
+          <div class="image-placeholder">
+          <i class="fas fa-user"></i>
+          <span>Clique para adicionar uma foto</span>
+          </div>
+          </div>
+          <input type="file" id="founderImage" accept="image/*"style="display: none;">
           </div>
         </div>
         <button id="addFounder" class="add-founder-btn">
@@ -192,7 +192,12 @@ function openFoundersEditModal() {
   const imageInput = document.getElementById('founderImage');
   const imagePreview = document.getElementById('founderImagePreview');
   const imagePlaceholder = document.querySelector('.image-placeholder');
-  
+  const imageContainer = document.querySelector('.image-preview-container');
+
+  imageContainer.addEventListener('click', function() {
+    imageInput.click();
+  });
+
   imageInput.addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
@@ -317,14 +322,14 @@ function editFounder(index, currentName, currentTitle, currentImage) {
         <div class="form-group">
           <label for="editFounderImage">Foto:</label>
           <div class="image-upload-container">
-            <input type="file" id="editFounderImage" accept="image/*">
-            <div class="image-preview-container">
-              <img id="editFounderImagePreview" class="image-preview visible" src="${currentImage}" alt="Preview">
-              <div class="image-placeholder" style="display: none;">
-                <i class="fas fa-user"></i>
-                <span>Clique para adicionar uma foto</span>
-              </div>
-            </div>
+          <div class="image-preview-container">
+          <img id="editFounderImagePreview" class="image-preview visible" src="${currentImage}" alt="Preview">
+          <div class="image-placeholder" style="display: none;">
+          <i class="fas fa-user"></i>
+          <span>Clique para adicionar uma foto</span>
+          </div>
+          </div>
+          <input type="file" id="editFounderImage" accept="image/*"style="display: none;">
           </div>
         </div>
         <div class="modal-actions">
@@ -343,6 +348,10 @@ function editFounder(index, currentName, currentTitle, currentImage) {
   const imageInput = document.getElementById('editFounderImage');
   const imagePreview = document.getElementById('editFounderImagePreview');
   const imagePlaceholder = document.querySelector('.image-placeholder');
+  const imageContainer = document.querySelector('.image-preview-container');
+  imageContainer.addEventListener('click', function() {
+    imageInput.click();
+  });
   
   imageInput.addEventListener('change', function(e) {
     const file = e.target.files[0];
