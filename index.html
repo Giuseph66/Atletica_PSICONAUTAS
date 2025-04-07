@@ -15,24 +15,27 @@
   <header>
     <nav>
       <ul class="navbar">
-        <li><a href="#about">Quem Somos</a></li>
-        <li><a href="#founders">Fundadores</a></li>
-        <li><a href="#products">Produtos</a></li>
-        <li><a href="#events">Eventos</a></li>
-        <li><a href="#extras">Extras</a></li>
-        <li><a href="#social">Redes Sociais</a></li>
-        <li><a href="#registration-form">Registro</a></li>
+        <li><a href="#about"><i class="fas fa-users"></i> Quem Somos</a></li>
+        <li><a href="#founders"><i class="fas fa-user-tie"></i> Fundadores</a></li>
+        <li><a href="#products"><i class="fas fa-box"></i> Produtos</a></li>
+        <li><a href="#events"><i class="fas fa-calendar-alt"></i> Eventos</a></li>
+        <li><a href="#extras"><i class="fas fa-info-circle"></i> Extras</a></li>
+        <li><a href="#social"><i class="fas fa-share-alt"></i> Redes Sociais</a></li>
+        <li><a href="#registration-form"><i class="fas fa-user-plus"></i> Registro</a></li>
       </ul>
     </nav>
     <h1>Atlética PSICONAUTAS</h1>
+    <button id="adminButton" style="display: none;">
+      <i class="fas fa-user-shield"></i> Modo Admin
+    </button>
   </header>
   
   <main>
     <!-- Seção Quem Somos (tipo texto) -->
     <section id="about" class="editable-section" data-type="text">
       <div class="section-header">
-        <h2>Quem Somos</h2>
-        <button class="section-edit-btn" data-section="about">Editar</button>
+        <h2><i class="fas fa-users"></i> Quem Somos</h2>
+        <button class="section-edit-btn" data-section="about"><i class="fas fa-edit"></i> Editar</button>
       </div>
       <div class="section-content">
         <p>Digite aqui informações sobre a atlética...</p>
@@ -42,30 +45,30 @@
     <!-- Seção Fundadores e Diretores (tipo lista) -->
     <section id="founders" class="editable-section" data-type="list">
       <div class="section-header">
-        <h2>Fundadores e Diretores</h2>
-        <button class="section-edit-btn" data-section="founders">Editar</button>
+        <h2><i class="fas fa-user-tie"></i> Fundadores e Diretores</h2>
+        <button class="section-edit-btn" data-section="founders"><i class="fas fa-edit"></i> Editar</button>
       </div>
-      <ul class="section-list">
-        <!-- Inicialmente vazio -->
-      </ul>
+      <div class="section-content">
+        <div class="founders-grid"></div>
+      </div>
     </section>
     
     <!-- Seção Produtos Oferecidos (tipo lista) -->
     <section id="products" class="editable-section" data-type="list">
       <div class="section-header">
-        <h2>Produtos Oferecidos</h2>
-        <button class="section-edit-btn" data-section="products">Editar</button>
+        <h2><i class="fas fa-box"></i> Produtos Oferecidos</h2>
+        <button class="section-edit-btn" data-section="products"><i class="fas fa-edit"></i> Editar</button>
       </div>
-      <ul class="section-list">
-        <!-- Inicialmente vazio -->
-      </ul>
+      <div class="section-content">
+        <div class="products-grid"></div>
+      </div>
     </section>
     
     <!-- Seção Eventos (tipo lista) -->
     <section id="events" class="editable-section" data-type="list">
       <div class="section-header">
-        <h2>Eventos e Projetos Programados</h2>
-        <button class="section-edit-btn" data-section="events">Editar</button>
+        <h2><i class="fas fa-calendar-alt"></i> Eventos e Projetos Programados</h2>
+        <button class="section-edit-btn" data-section="events"><i class="fas fa-edit"></i> Editar</button>
       </div>
       <ul class="section-list">
         <!-- Inicialmente vazio -->
@@ -75,42 +78,59 @@
     <!-- Seção Informações Extras (tipo texto) -->
     <section id="extras" class="editable-section" data-type="text">
       <div class="section-header">
-        <h2>Informações Extras</h2>
-        <button class="section-edit-btn" data-section="extras">Editar</button>
+        <h2><i class="fas fa-info-circle"></i> Informações Extras</h2>
+        <button class="section-edit-btn" data-section="extras"><i class="fas fa-edit"></i> Editar</button>
       </div>
       <div class="section-content">
         <p>Digite aqui as informações extras...</p>
       </div>
     </section>
     
-    <!-- Seção Redes Sociais (tipo texto) -->
-    <section id="social" class="editable-section" data-type="text">
-      <div class="section-header">
-        <h2>Redes Sociais</h2>
-        <button class="section-edit-btn" data-section="social">Editar</button>
-      </div>
-      <div class="section-content">
-        <p>Digite aqui os links ou informações sobre redes sociais...</p>
-      </div>
-    </section>
   </main>
   
   <!-- Formulário de Registro (para identificar administrador) -->
   <footer id="registration-form">
     <section class="registration">
-      <h2>Registro</h2>
+      <h2><i class="fas fa-user-plus"></i> Registro</h2>
       <form id="registrationForm">
         <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" placeholder="Digite sua senha ou nome">
+        <input type="text" id="name" name="name" placeholder="Digite sua senha ou nome" required>
         <label for="contact">Número de Contato:</label>
-        <input type="tel" id="contact" name="contact" placeholder="Seu número de contato">
-        <button type="submit">Enviar</button>
+        <input type="tel" id="contact" name="contact" placeholder="Seu número de contato" required>
+        <button type="submit"><i class="fas fa-paper-plane"></i> Enviar</button>
       </form>
     </section>
     <div class="social-media">
-      <a href="https://www.facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <div class="social-media-header">
+        <h3>Redes Sociais</h3>
+        <button class="social-edit-btn"><i class="fas fa-edit"></i> Editar</button>
+      </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com" target="_blank" aria-label="Facebook" data-platform="facebook">
+          <i class="fab fa-facebook"></i>
+          <span>Facebook</span>
+        </a>
+        <a href="https://www.instagram.com" target="_blank" aria-label="Instagram" data-platform="instagram">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://www.twitter.com" target="_blank" aria-label="Twitter" data-platform="twitter">
+          <i class="fab fa-twitter"></i>
+          <span>Twitter</span>
+        </a>
+        <a href="https://wa.me/" target="_blank" aria-label="WhatsApp" data-platform="whatsapp">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp</span>
+        </a>
+        <a href="https://www.youtube.com" target="_blank" aria-label="YouTube" data-platform="youtube">
+          <i class="fab fa-youtube"></i>
+          <span>YouTube</span>
+        </a>
+        <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok" data-platform="tiktok">
+          <i class="fab fa-tiktok"></i>
+          <span>TikTok</span>
+        </a>
+      </div>
     </div>
   </footer>
   
@@ -118,13 +138,28 @@
   <div id="editModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h2 id="modalTitle">Editar Seção</h2>
+      <h2 id="modalTitle">Editar Conteúdo</h2>
       <div id="modalBody">
         <!-- Conteúdo dinâmico será inserido aqui -->
       </div>
       <div class="modal-actions">
-        <button id="saveChanges">Salvar</button>
-        <button id="cancelEdit">Cancelar</button>
+        <button id="saveChanges"><i class="fas fa-save"></i> Salvar</button>
+        <button id="cancelEdit"><i class="fas fa-times"></i> Cancelar</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal de Edição de Redes Sociais -->
+  <div id="socialEditModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Editar Links das Redes Sociais</h2>
+      <div class="social-edit-form">
+        <!-- Formulário será preenchido dinamicamente -->
+      </div>
+      <div class="modal-actions">
+        <button id="saveSocialLinks"><i class="fas fa-save"></i> Salvar</button>
+        <button id="cancelSocialEdit"><i class="fas fa-times"></i> Cancelar</button>
       </div>
     </div>
   </div>
