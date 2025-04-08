@@ -1320,10 +1320,10 @@ async function loadEvents() {
         
         console.log('Caminho da imagem do evento:', imagePath);
         
+        //<img src="${imagePath}" alt="${eventName}" class="event-image">
         return `
           <li class="event-item">
             <div class="event-card">
-              <img src="${imagePath}" alt="${eventName}" class="event-image">
               <div class="event-info">
                 <h3 class="event-name">${eventName}</h3>
                 <p class="event-date">${eventDate}</p>
@@ -1520,3 +1520,33 @@ document.getElementById('registrationForm').addEventListener('submit', function(
   event.preventDefault(); // Previne o comportamento padrão do formulário
   registerUser(); // Chama a função de registro
 });
+
+function updateSocialLinksFromDadus() {
+  fetch('data/dadus.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao carregar o arquivo dadus.json');
+      }
+      return response.json();
+    })
+    .then(data => {
+      const socialLinks = data.redesSociais;
+      if (!socialLinks) {
+        console.error('Nenhum link de redes sociais encontrado no dadus.json');
+        return;
+      }
+
+      Object.keys(socialLinks).forEach(platform => {
+        const linkElement = document.querySelector(`.social-links a[data-platform="${platform}"]`);
+        if (linkElement) {
+          linkElement.setAttribute('href', socialLinks[platform]);
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Erro ao atualizar os links das redes sociais:', error);
+    });
+}
+
+// Chama a função ao carregar a página
+document.addEventListener('DOMContentLoaded', updateSocialLinksFromDadus);

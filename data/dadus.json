@@ -28,14 +28,16 @@
     }
   ],
   "eventos": [
-    {
+    { 
       "nome": "Interpsico 2025",
       "data": "15-17 de Maio de 2025",
+      "imagem": "imagens/eventos/camisa.jpeg",
       "descricao": "O maior evento esportivo entre as atléticas de psicologia do Brasil. 3 dias de competições, integração e muita diversão!"
     },
     {
       "nome": "Festa de Integração",
       "data": "10 de Março de 2025",
+      "imagem": "imagens/eventos/camisa.jpeg",
       "descricao": "Venha conhecer a Atlética PSICONAUTAS! Uma noite de jogos, música e integração com os veteranos."
     }
   ],
