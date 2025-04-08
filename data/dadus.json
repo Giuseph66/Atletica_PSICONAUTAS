@@ -3,39 +3,40 @@
   "quemSomos": "A Atlética PSICONAUTAS é uma organização estudantil dedicada a promover eventos, produtos e projetos que unem esporte, cultura e integração acadêmica.",
   "fundadoresEDiretores": [
     {
-      "nome": "João Silva",
-      "cargo": "Presidente"
+      "nome": "Nome do Fundador 1",
+      "cargo": "Presidente",
+      "imagem": "imagens/fundadores/a.png"
     },
     {
-      "nome": "Maria Oliveira",
-      "cargo": "Vice-Presidente"
-    },
-    {
-      "nome": "Carlos Santos",
-      "cargo": "Diretor de Marketing"
-    },
-    {
-      "nome": "Ana Costa",
-      "cargo": "Diretora Financeira"
+      "nome": "Nome do Fundador 2",
+      "cargo": "Vice-Presidente",
+      "imagem": "imagens/fundadores/g.png"
     }
   ],
   "produtos": [
     {
-      "nome": "Camisetas Personalizadas"
+      "nome": "Nome do Produto 1",
+      "imagem": "imagens/produtos/img1.png"
     },
     {
-      "nome": "Canecas"
+      "nome": "Camisa",
+      "imagem": "imagens/produtos/camisa.jpeg"
     },
     {
-      "nome": "Acessórios"
+      "nome": "Nome do Produto 3",
+      "imagem": "imagens/produtos/Captura de tela de 2025-02-26 20-04-35.png"
     }
   ],
   "eventos": [
     {
-      "nome": "Interpsico 2025"
+      "nome": "Interpsico 2025",
+      "data": "15-17 de Maio de 2025",
+      "descricao": "O maior evento esportivo entre as atléticas de psicologia do Brasil. 3 dias de competições, integração e muita diversão!"
     },
     {
-      "nome": "Festa de Integração"
+      "nome": "Festa de Integração",
+      "data": "10 de Março de 2025",
+      "descricao": "Venha conhecer a Atlética PSICONAUTAS! Uma noite de jogos, música e integração com os veteranos."
     }
   ],
   "informacoesExtras": "A Atlética PSICONAUTAS também apoia projetos sociais e promove campanhas de conscientização sobre saúde mental.",
@@ -43,7 +44,7 @@
     "facebook": "https://www.facebook.com/psiconautas",
     "instagram": "https://www.instagram.com/psiconautas",
     "twitter": "https://www.twitter.com/psiconautas",
-    "whatsapp": "https://wa.me/1234567890",
+    "whatsapp": "https://wa.me/+5566999174546",
     "youtube": "https://www.youtube.com/psiconautas",
     "tiktok": "https://www.tiktok.com/@psiconautas"
   }

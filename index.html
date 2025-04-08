@@ -164,6 +164,37 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal de Visualização de Produto -->
+  <div id="productImageModal" class="modal">
+    <div class="modal-content product-modal">
+      <span class="close">&times;</span>
+      <div class="product-image-container">
+        <img id="modalProductImage" src="" alt="Imagem do Produto">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Dados de Administradores -->
+  <div id="adminDataModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Usuários Registrados</h2>
+      <div class="admin-table-container">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Contato</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody">
+            <!-- Os dados serão inseridos aqui via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
   
   <!-- Link para o JavaScript externo -->
   <script src="js/script.js"></script>
